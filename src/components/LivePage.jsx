@@ -11,7 +11,8 @@ export default function LivePage({ apiKey }) {
     const handleSubmit = (e) => {
         if(e.key=='Enter'){
             e.preventDefault()
-            setSymbols(prev=>[...prev,inputRef.current.value])
+              const value = inputRef.current.value.trim();
+            setSymbols(prev=>[...prev,value])
             inputRef.current.value = '';
         }
     }
@@ -30,7 +31,7 @@ export default function LivePage({ apiKey }) {
             <div>
             {onlineStatus==undefined?'⚪️':onlineStatus=='pass'?'🟢':'🔴'}
             <span>{symbol}</span></div>
-            <div> {data ? data.price : '…'}
+            <div> {data ? data.price : onlineStatus==undefined || onlineStatus=='pass'?'...':'fail'}
                 </div>
           </div>
         );
