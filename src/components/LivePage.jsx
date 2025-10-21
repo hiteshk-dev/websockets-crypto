@@ -31,7 +31,7 @@ export default function LivePage({ apiKey }) {
             <div>
             {onlineStatus==undefined?'⚪️':onlineStatus=='pass'?'🟢':'🔴'}
             <span>{symbol}</span></div>
-            <div> {data ? data.price : !onlineStatus=='fail'?'...':'fail'}
+            <div> {data ? data.price : onlineStatus=='fail'?'fail':'...'}
                 </div>
           </div>
         );
