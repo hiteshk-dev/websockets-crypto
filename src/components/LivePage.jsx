@@ -9,8 +9,11 @@ export default function LivePage({ apiKey }) {
     
 
     const handleSubmit = (e) => {
-        if(e.key=='Enter')
-        setSymbols(prev=>[...prev,inputRef.current.value])
+        if(e.key=='Enter'){
+            e.preventDefault()
+            setSymbols(prev=>[...prev,inputRef.current.value])
+            inputRef.current.value = '';
+        }
     }
   return (
     <div className='flex justify-center items-center h-screen'>
